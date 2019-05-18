@@ -1,7 +1,6 @@
 // TODO
-// - add more moles
 // - stylize buttons/moles
-// - check IE 11 functionality
+// - check IE 11 functionality (es5)
 // - accessibility checklist
 // - mobile
 
@@ -106,15 +105,15 @@ class Mole {
     };
 
     stopCycle = () => {
-        clearInterval(this.cycle)
+        clearInterval(this.cycle);
     };
 
     onClick = (e) => {
-        if (!this.game.playing) {
+        if (!this.game.playing || !this.active) {
             return;
         }
         this.hitAction();
-        this.toggleActive(this.active);
+        this.toggleActive();
         this.game.addPoint();
     };
 
@@ -130,13 +129,13 @@ class Mole {
         }, 125);
     };
 
-    toggleActive = (active) => {
-        if (active) {
+    toggleActive = () => {
+        if (this.active) {
             this.el.classList.remove('shown');
         } else {
             this.el.classList.add('shown');
         }
-        this.active = !active;
+        this.active = !this.active;
         this.stopCycle();
         this.startCycle();
     };
