@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="styles.css" type="text/css" rel="stylesheet"/>
+    <title>Whack-a-Mole</title>
+</head>
+<body>
+
+<button id="play-pause">PLAY</button>
+<div id="score">0</div>
+
+<div class="game-board">
+    <div class="mole-container">
+        <div class="hole">
+            <img src="img/mole.svg" class="mole" alt="Mole"/>
+        </div>
+    </div>
+    <div class="mole-container">
+        <div class="hole">
+            <img src="img/mole.svg" class="mole" alt="Mole"/>
+        </div>
+    </div>
+</div>
+
+
+<div>Icons made by <a
+        href="https://www.freepik.com/?__hstc=57440181.a8dda2c4317383da191e89da94e1a469.1558111730990.1558111730990.1558111730990.1&__hssc=57440181.3.1558111730990&__hsfp=4163401379"
+        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+        3.0 BY</a></div>
+
+<script src="js/scripts.js"></script>
+<script type="application/javascript">
+    const Game = new WhackAMole();
+
+    const playBtn = document.getElementById('play-pause');
+    playBtn.onclick = function () {
+        if (Game.playing) {
+            Game.stop();
+            playBtn.innerText = 'PLAY';
+        } else {
+            Game.start();
+            playBtn.innerText = 'PAUSE';
+        }
+    }
+</script>
+</body>
+</html>

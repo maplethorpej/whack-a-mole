@@ -1,0 +1,30 @@
+.mole-container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0 0 100% 100% / 0 0 33% 33%;
+}
+
+.mole-container .hole {
+    background-color: #333333;
+    height: 100px;
+    width: 300px;
+    border-radius: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.mole-container .mole {
+    width: 200px;
+    left: 50px;
+    position: absolute;
+    bottom: -220px;
+    opacity: .25;
+    transition: .25s bottom ease-in-out, .25s opacity ease-in-out;
+}
+
+.mole-container .mole.shown {
+    bottom: 10px;
+    opacity: 1;
+}
