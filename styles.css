@@ -21,10 +21,20 @@
     position: absolute;
     bottom: -220px;
     opacity: .25;
-    transition: .25s bottom ease-in-out, .25s opacity ease-in-out;
+    transform: rotate(0deg);
+    transition: .25s bottom ease-in-out, .25s opacity ease-in-out, transform .25s;
 }
 
 .mole-container .mole.shown {
     bottom: 10px;
     opacity: 1;
+    transform: rotate(0deg);
+}
+
+.mole-container .mole.shown:hover {
+    cursor: pointer;
+}
+
+.mole-container .mole.hit {
+    transform: rotate(-35deg) scale(.5);
 }

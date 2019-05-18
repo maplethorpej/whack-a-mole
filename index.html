@@ -36,8 +36,11 @@
 <script type="application/javascript">
     const Game = new WhackAMole();
 
-    const playBtn = document.getElementById('play-pause');
+    // set play/pause handler
     playBtn.onclick = function () {
+        if (Game.msElapsed === Game.msTimeLimit) {
+            return;
+        }
         if (Game.playing) {
             Game.stop();
             playBtn.innerText = 'PLAY';
@@ -47,7 +50,7 @@
         }
     };
 
-    const resetBtn = document.getElementById('reset');
+    // set reset handler
     resetBtn.onclick = function () {
         Game.reset();
     };

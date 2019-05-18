@@ -1,7 +1,4 @@
 // TODO
-// - add game timer
-// - output time remaining
-// - add onclick feedback style
 // - add more moles
 // - stylize buttons/moles
 // - check IE 11 functionality
@@ -11,13 +8,17 @@
 const scoreEl = document.getElementById('score');
 const timerEl = document.getElementById('time-elapsed');
 const moleEls = document.getElementsByClassName('mole');
+const playBtn = document.getElementById('play-pause');
+const resetBtn = document.getElementById('reset');
 
 class WhackAMole {
     constructor() {
         this.msElapsed = 0;
+        this.msTimeLimit = 15000;
         this.playing = false;
         this.score = 0;
         this.moles = this.initMoles();
+        this.setTimeRemaining();
     }
 
     initMoles = () => {
@@ -29,7 +30,7 @@ class WhackAMole {
     };
 
     startTimer = () => {
-        this.timer = setInterval(this.incrementTime, 100)
+        this.timer = setInterval(this.incrementTime, 100);
     };
 
     stopTimer = () => {
@@ -39,16 +40,22 @@ class WhackAMole {
     resetTimer = () => {
         this.stopTimer();
         this.msElapsed = 0;
-        this.setTimeElapsed();
+        this.setTimeRemaining();
     };
 
     incrementTime = () => {
         this.msElapsed += 100;
-        this.setTimeElapsed();
+        this.setTimeRemaining();
     };
 
-    setTimeElapsed = () => {
-        timerEl.innerText = this.msElapsed;
+    setTimeRemaining = () => {
+        const secondsRemaining = (this.msTimeLimit - this.msElapsed) / 1000;
+        timerEl.innerText = secondsRemaining.toFixed(2) + ' seconds remaining';
+
+        if (!secondsRemaining) {
+            playBtn.innerText = 'Game Over';
+            this.stop();
+        }
     };
 
     setScore = () => {
@@ -56,6 +63,9 @@ class WhackAMole {
     };
 
     start = () => {
+        if (this.msElapsed === this.msTimeLimit) {
+            return;
+        }
         this.playing = true;
         this.moles.forEach(mole => mole.startCycle());
         this.startTimer();
@@ -73,13 +83,13 @@ class WhackAMole {
         this.resetTimer();
         this.score = 0;
         this.setScore();
+        playBtn.innerText = 'Play';
     };
 
     addPoint = () => {
         this.score++;
         this.setScore();
     };
-
 }
 
 class Mole {
@@ -102,8 +112,16 @@ class Mole {
         if (!this.game.playing) {
             return;
         }
+        this.hitAction();
         this.toggleActive();
         this.game.addPoint();
+    };
+
+    hitAction = () => {
+        this.el.classList.add('hit');
+        setTimeout(() => {
+            this.el.classList.remove('hit')
+        }, 250);
     };
 
     toggleActive = () => {
