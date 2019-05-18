@@ -54,8 +54,8 @@ class WhackAMole {
 
         if (!secondsRemaining) {
             playBtn.innerText = 'Game Over';
+            this.resetMoles();
             this.stop();
-            this.moles.forEach(mole => mole.reset());
         }
     };
 
