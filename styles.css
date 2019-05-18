@@ -1,3 +1,23 @@
+body {
+    transition: .125s background-color;
+    background-color: rgba(143, 188, 143, 1);
+}
+
+body.hit {
+    background-color: rgba(143, 188, 143, .85);
+}
+
+.game-board {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.game-board .row {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+
 .mole-container {
     width: 300px;
     height: 300px;

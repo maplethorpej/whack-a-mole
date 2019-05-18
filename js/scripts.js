@@ -5,6 +5,7 @@
 // - accessibility checklist
 // - mobile
 
+const bodyEl = document.getElementsByTagName('body')[0];
 const scoreEl = document.getElementById('score');
 const timerEl = document.getElementById('time-elapsed');
 const moleEls = document.getElementsByClassName('mole');
@@ -113,24 +114,29 @@ class Mole {
             return;
         }
         this.hitAction();
-        this.toggleActive();
+        this.toggleActive(this.active);
         this.game.addPoint();
     };
 
     hitAction = () => {
         this.el.classList.add('hit');
         setTimeout(() => {
-            this.el.classList.remove('hit')
+            this.el.classList.remove('hit');
         }, 250);
+
+        bodyEl.classList.add('hit');
+        setTimeout(() => {
+            bodyEl.classList.remove('hit');
+        }, 125);
     };
 
-    toggleActive = () => {
-        if (this.active) {
+    toggleActive = (active) => {
+        if (active) {
             this.el.classList.remove('shown');
         } else {
             this.el.classList.add('shown');
         }
-        this.active = !this.active;
+        this.active = !active;
         this.stopCycle();
         this.startCycle();
     };
