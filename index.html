@@ -8,7 +8,9 @@
 <body>
 
 <button id="play-pause">PLAY</button>
+<button id="reset">RESET</button>
 <div id="score">0</div>
+<div id="time-elapsed">0</div>
 
 <div class="game-board">
     <div class="mole-container">
@@ -43,7 +45,12 @@
             Game.start();
             playBtn.innerText = 'PAUSE';
         }
-    }
+    };
+
+    const resetBtn = document.getElementById('reset');
+    resetBtn.onclick = function () {
+        Game.reset();
+    };
 </script>
 </body>
 </html>

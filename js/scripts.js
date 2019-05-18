@@ -8,16 +8,19 @@
 // - accessibility checklist
 // - mobile
 
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('time-elapsed');
+const moleEls = document.getElementsByClassName('mole');
+
 class WhackAMole {
     constructor() {
-        this.time = 0;
+        this.msElapsed = 0;
         this.playing = false;
         this.score = 0;
         this.moles = this.initMoles();
     }
 
     initMoles = () => {
-        const moleEls = document.getElementsByClassName('mole');
         let moles = [];
         [].forEach.call(moleEls, (moleEl) => {
             moles.push(new Mole(moleEl, this));
@@ -25,24 +28,56 @@ class WhackAMole {
         return moles;
     };
 
+    startTimer = () => {
+        this.timer = setInterval(this.incrementTime, 100)
+    };
+
+    stopTimer = () => {
+        clearInterval(this.timer);
+    };
+
+    resetTimer = () => {
+        this.stopTimer();
+        this.msElapsed = 0;
+        this.setTimeElapsed();
+    };
+
+    incrementTime = () => {
+        this.msElapsed += 100;
+        this.setTimeElapsed();
+    };
+
+    setTimeElapsed = () => {
+        timerEl.innerText = this.msElapsed;
+    };
+
+    setScore = () => {
+        scoreEl.innerText = this.score;
+    };
+
     start = () => {
         this.playing = true;
         this.moles.forEach(mole => mole.startCycle());
+        this.startTimer();
     };
 
     stop = () => {
         this.playing = false;
         this.moles.forEach(mole => mole.stopCycle());
+        this.stopTimer();
     };
 
     reset = () => {
         this.playing = false;
         this.moles.forEach(mole => mole.reset());
+        this.resetTimer();
+        this.score = 0;
+        this.setScore();
     };
 
     addPoint = () => {
         this.score++;
-        document.getElementById('score').innerText = this.score;
+        this.setScore();
     };
 
 }
@@ -64,6 +99,9 @@ class Mole {
     };
 
     onClick = (e) => {
+        if (!this.game.playing) {
+            return;
+        }
         this.toggleActive();
         this.game.addPoint();
     };
@@ -87,6 +125,7 @@ class Mole {
 
     reset = () => {
         this.active = false;
+        this.stopCycle();
         this.el.classList.remove('shown');
     }
 }
