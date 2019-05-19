@@ -1,16 +1,3 @@
-// TODO
-// - stylize buttons/moles
-// - check IE 11 functionality (es5)
-// - accessibility checklist
-// - mobile
-
-const bodyEl = document.getElementsByTagName('body')[0];
-const scoreEl = document.getElementById('score');
-const timerEl = document.getElementById('time-elapsed');
-const moleEls = document.getElementsByClassName('mole');
-const playBtn = document.getElementById('play-pause');
-const resetBtn = document.getElementById('reset');
-
 class WhackAMole {
     constructor() {
         this.msElapsed = 0;
@@ -95,65 +82,4 @@ class WhackAMole {
         this.score++;
         this.setScore();
     };
-}
-
-class Mole {
-    constructor(el, game) {
-        this.el = el;
-        this.active = false;
-        this.game = game;
-        el.onclick = this.onClick;
-    }
-
-    startCycle = () => {
-        this.cycle = setInterval(this.toggleActive, this.randomInterval());
-    };
-
-    stopCycle = () => {
-        clearInterval(this.cycle);
-    };
-
-    onClick = (e) => {
-        if (!this.game.playing || !this.active) {
-            return;
-        }
-        this.hitAction();
-        this.toggleActive();
-        this.game.addPoint();
-    };
-
-    hitAction = () => {
-        this.el.classList.add('hit');
-        setTimeout(() => {
-            this.el.classList.remove('hit');
-        }, 250);
-
-        bodyEl.classList.add('hit');
-        setTimeout(() => {
-            bodyEl.classList.remove('hit');
-        }, 125);
-    };
-
-    toggleActive = () => {
-        if (this.active) {
-            this.el.classList.remove('shown');
-        } else {
-            this.el.classList.add('shown');
-        }
-        this.active = !this.active;
-        this.stopCycle();
-        this.startCycle();
-    };
-
-    randomInterval = () => {
-        const max = this.active ? 1 : 3;
-        const min = this.active ? .5 : 1;
-        return Math.round((Math.random() * (max - min + 1) + min) * 1000);
-    };
-
-    reset = () => {
-        this.active = false;
-        this.stopCycle();
-        this.el.classList.remove('shown');
-    }
 }
