@@ -50,7 +50,7 @@ class WhackAMole {
 
     setTimeRemaining = () => {
         const secondsRemaining = (this.msTimeLimit - this.msElapsed) / 1000;
-        timerEl.innerText = secondsRemaining.toFixed(2) + ' seconds remaining';
+        timerEl.innerText = secondsRemaining.toFixed(2).replace('.', ':');
 
         if (!secondsRemaining) {
             playBtn.innerText = 'Game Over';
@@ -88,7 +88,7 @@ class WhackAMole {
         this.resetTimer();
         this.score = 0;
         this.setScore();
-        playBtn.innerText = 'Play';
+        playBtn.innerText = 'PLAY';
     };
 
     addPoint = () => {

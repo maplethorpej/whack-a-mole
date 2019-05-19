@@ -3,75 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <link href="styles.css" type="text/css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whack-a-Mole</title>
 </head>
 <body>
 
-<button id="play-pause">PLAY</button>
-<button id="reset">RESET</button>
-<div id="score">0</div>
-<div id="time-elapsed">0</div>
+<div class="container">
 
-<div class="game-board">
-    <div class="row">
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+    <h1>Whack-A-Mole</h1>
+
+    <div class="controls">
+        <button id="play-pause" class="play">PLAY</button>
+        <button id="reset" class="reset">RESET</button>
+    </div>
+
+    <div class="game-info">
+        <div>
+            <div id="score" class="value">0</div>
+            <label>SCORE</label>
+        </div>
+        <div>
+            <div id="time-elapsed" class="value">0</div>
+            <label>TIME REMAINING</label>
+        </div>
+    </div>
+
+    <div class="game-board">
+        <div class="row">
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
             </div>
         </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+        <div class="row">
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
             </div>
         </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+        <div class="row">
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
+            </div>
+            <div class="mole-container">
+                <div class="hole">
+                    <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
+
+
+    <div class="attribution">
+        Icons made by <a
+            href="https://www.freepik.com/?__hstc=57440181.a8dda2c4317383da191e89da94e1a469.1558111730990.1558111730990.1558111730990.1&__hssc=57440181.3.1558111730990&__hsfp=4163401379"
+            title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
+                          target="_blank">CC 3.0 BY</a>
     </div>
-    <div class="row">
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
-        <div class="mole-container">
-            <div class="hole">
-                <img src="img/mole.svg" class="mole" draggable="false" alt="Mole"/>
-            </div>
-        </div>
-    </div>
+
 </div>
-
-
-<div>Icons made by <a
-        href="https://www.freepik.com/?__hstc=57440181.a8dda2c4317383da191e89da94e1a469.1558111730990.1558111730990.1558111730990.1&__hssc=57440181.3.1558111730990&__hsfp=4163401379"
-        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
-    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
-        3.0 BY</a></div>
 
 <script src="js/scripts.js"></script>
 <script type="application/javascript">

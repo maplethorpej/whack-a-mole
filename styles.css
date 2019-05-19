@@ -1,26 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap');
+
 body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
     transition: .125s background-color;
     background-color: rgba(143, 188, 143, 1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.hit {
     background-color: rgba(143, 188, 143, .85);
 }
 
-.game-board {
+.container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 48px auto;
+}
+
+h1 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 3em;
+    color: #193319;
+    margin: 0 0 16px;
+    text-shadow: -2px 2px 2px rgba(255, 255, 255, .2);
+}
+
+.controls {
+    padding: 24px;
+}
+
+.controls button {
+    padding: 8px 16px;
+    font-size: 1.25em;
+    border-radius: 4px;
+    color: #EFEFEF;
+    border: 2px solid transparent;
+}
+
+.controls button:focus {
+    outline: none;
+}
+
+.controls button:hover {
+    cursor: pointer;
+    opacity: .85;
+}
+
+.controls button.play {
+    font-weight: 700;
+    background-color: #193319;
+}
+
+.controls button.reset {
+    font-weight: 400;
+    background-color: transparent;
+}
+
+.game-info {
+    display: flex;
+    padding: 24px;
+    font-size: 1.25em;
+    border: 2px solid rgba(25, 42, 25, .15);
+    background-color: rgba(25, 42, 25, .05);
+    border-radius: 4px;
+    justify-content: space-between;
+}
+
+.game-info label {
+    color: rgba(25, 42, 25, .85);
+    font-weight: 700;
+    font-size: .85em;
+}
+
+.game-info .value {
+    color: #193319;
+    font-size: 1.25em;
+    font-weight: 600;
+    padding: 8px 0;
 }
 
 .game-board .row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 40px 0;
+}
+
+.game-board .row:first-of-type {
+    margin-top: 0;
 }
 
 .mole-container {
     width: 300px;
-    height: 300px;
+    height: 240px;
     overflow: hidden;
     position: relative;
     border-radius: 0 0 100% 100% / 0 0 33% 33%;
@@ -61,4 +133,63 @@ body.hit {
 
 .mole-container .mole.hit {
     transform: rotate(-35deg) scale(.5);
+}
+
+.attribution {
+    margin-top: 24px;
+    font-size: .9em;
+    color: #444;
+    line-height: 1.5em;
+}
+
+.attribution a {
+    color: #333;
+}
+
+@media screen and (max-width: 1036px) {
+    .game-info {
+        justify-content: space-around;
+        padding: 16px;
+    }
+
+    .mole-container {
+        width: 150px;
+        height: 120px;
+    }
+
+    .mole-container .hole {
+        height: 50px;
+        width: 150px;
+    }
+
+    .mole-container .mole {
+        width: 100px;
+        left: 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 0;
+    }
+
+    .game-info {
+        padding: 12px;
+    }
+
+    .mole-container {
+        width: 100px;
+        height: 80px;
+    }
+
+    .mole-container .hole {
+        height: 34px;
+        width: 100px;
+    }
+
+    .mole-container .mole {
+        width: 67px;
+        left: 17px;
+    }
 }
